@@ -1,7 +1,7 @@
 from pyblockworld import World
 
 
-class Wall:
+class Roof:
 
     def __init__(self, pos: tuple, bw: World):
 

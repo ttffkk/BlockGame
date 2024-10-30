@@ -1,16 +1,18 @@
-from pyblockworld import World
+from BlockWorld import World
+from Wall import Wall
+from WallWithWindow import WallWithWindow
 
 
+def b_key_pressed(welten: World):
+    x, y, z = welten.player_position()
+    y= y-1
+    wallis = WallWithWindow(pos=(x, y, z), bw=welten)
+    wallis.build()
+    wonder = WallWithWindow(pos=(x, y, z), bw=welten)
+    wonder.rotated = True
+    wonder.build()
 
-def b_key_pressed(world: World):
-  x, y, z = world.player_position()
-  world.setBlock(x, y, z, "default:brick")
-  world.setBlocks(x,y,z,x+3, y, z, "default:brick")
-  world.setBlocks(x,y,z,x, y+4, z, "default:grass")
-  world.setBlocks(x,y,z,x, y, z+5, "default:stone")
 
-
-
-world = World()
-world.build_key_pressed = b_key_pressed
-world.run()
+welt = World()
+welt.build_key_pressed = b_key_pressed
+welt.run()

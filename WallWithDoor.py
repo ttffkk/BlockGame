@@ -1,7 +1,8 @@
 from pyblockworld import World
+from Wall import Wall
 
 
-class Wall:
+class WallWithWindow(Wall):
 
     def __init__(self, pos: tuple, bw: World):
 
@@ -10,6 +11,7 @@ class Wall:
         self.rotated = False
         self.pos = pos
         self.material_id = "default:stone"
+        self.door_material_id = "air"
         self.bw = bw
 
     def build(self):
@@ -23,5 +25,7 @@ class Wall:
 
         if self.rotated:
                 self.bw.setBlocks(x,y,z,x+self.width-1,y+self.height,z,self.material_id)
+                self.bw.setBlocks(x+3,y,z,x+2,y+3,z,self.door_material_id)
         else:
                 self.bw.setBlocks(x,y,z,x,y+self.height,z+self.width-1,self.material_id)
+                self.bw.setBlocks(x,y,z+3,x,y+3,z+2,self.door_material_id)
