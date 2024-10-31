@@ -2,7 +2,7 @@ from pyblockworld import World
 from Wall import Wall
 
 
-class WallWithWindow(Wall):
+class WallWithDoor(Wall):
 
     def __init__(self, pos: tuple, bw: World):
 

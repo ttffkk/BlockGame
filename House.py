@@ -2,6 +2,8 @@ from pyblockworld import World
 
 from Wall import Wall
 from Roof import Roof
+from WallWithDoor import WallWithDoor
+from WallWithWindow import WallWithWindow
 
 
 class House:
@@ -14,21 +16,40 @@ class House:
         self.wallRight: Wall
         self.roof: Roof
         self.pos = pos
-        self.bw = bw
+        self.__bw = bw
 
     def build(self):
 
         if self.pos is None:
             raise ValueError("Wall position (x, y, z) is not set.")
-        if self.bw is None:
+        if self.__bw is None:
             raise ValueError("Wall is not associated with a PyBlockWorld instance.")
 
         x, y, z = self.pos
+        self.wallFront = Wall((x+3,y-1,z-2), self.__bw)
+        self.wallFront.build()
+        self.wallBack = WallWithWindow((x-3,y-1,z+3), self.__bw)
+        self.wallBack.material_id ="default:brick"
+        self.wallBack.rotated=True
+        self.wallBack.build()
+        self.wallLeft = WallWithDoor((x-3,y-1,z-3), self.__bw)
+        self.wallLeft.build()
+        self.wallRight = WallWithWindow((x-3,y-1,z-3), self.__bw)
+        self.wallRight.rotated=True
+        self.wallRight.build()
 
-        if self.rotated:
-            self.bw.setBlocks(x, y, z, x + self.width - 1, y + self.height, z, self.material_id)
-        else:
-            self.bw.setBlocks(x, y, z, x, y + self.height, z + self.width - 1, self.material_id)
 
-    def change_wall_material(new_material_id:str):
-        print
+
+
+
+
+    def change_wall_material(self,new_material_id:str):
+        self.wallFront.material = new_material_id
+        self.wallBack.material = new_material_id
+        self.wallLeft.material = new_material_id
+        self.wallRight.material = new_material_id
+        self.roof = new_material_id
+
+
+
+
