@@ -22,6 +22,6 @@ class Wall:
         x, y, z = self.pos
 
         if self.rotated:
-                self.bw.setBlocks(x,y,z,x+self.width-1,y+self.height,z,self.material_id)
+            self.bw.setBlocks(x, y, z, x + self.width - 1, y + self.height, z, self.material_id)
         else:
-                self.bw.setBlocks(x,y,z,x,y+self.height,z+self.width-1,self.material_id)
+            self.bw.setBlocks(x, y, z, x, y + self.height, z + self.width - 1, self.material_id)

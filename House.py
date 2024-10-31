@@ -26,30 +26,24 @@ class House:
             raise ValueError("Wall is not associated with a PyBlockWorld instance.")
 
         x, y, z = self.pos
-        self.wallFront = Wall((x+3,y-1,z-2), self.__bw)
+        self.wallFront = Wall((x + 3, y - 1, z - 2), self.__bw)
         self.wallFront.build()
-        self.wallBack = WallWithWindow((x-3,y-1,z+3), self.__bw)
-        self.wallBack.material_id ="default:brick"
-        self.wallBack.rotated=True
+        self.wallBack = WallWithWindow((x - 3, y - 1, z + 3), self.__bw)
+        self.wallBack.material_id = "default:brick"
+        self.wallBack.rotated = True
         self.wallBack.build()
-        self.wallLeft = WallWithDoor((x-3,y-1,z-3), self.__bw)
+        self.wallLeft = WallWithDoor((x - 3, y - 1, z - 3), self.__bw)
         self.wallLeft.build()
-        self.wallRight = WallWithWindow((x-3,y-1,z-3), self.__bw)
-        self.wallRight.rotated=True
+        self.wallRight = WallWithWindow((x - 3, y - 1, z - 3), self.__bw)
+        self.wallRight.rotated = True
         self.wallRight.build()
+        third = WallWithDoor((x + 8, y + 8, z + 6), self.__bw)
+        third.rotated = True
+        third.build()
 
-
-
-
-
-
-    def change_wall_material(self,new_material_id:str):
+    def change_wall_material(self, new_material_id: str):
         self.wallFront.material = new_material_id
         self.wallBack.material = new_material_id
         self.wallLeft.material = new_material_id
         self.wallRight.material = new_material_id
         self.roof = new_material_id
-
-
-
-

@@ -12,6 +12,5 @@ def set_blocks(x1, y1, z1, x2, y2, z2, blocks):
                 World.setBlock(x, y, z, blocks)
 
 
-
 def player_position():
     return World.player_position(World, False)

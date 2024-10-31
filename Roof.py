@@ -20,4 +20,3 @@ class Roof:
             raise ValueError("Wall is not associated with a PyBlockWorld instance.")
 
         x, y, z = self.pos
-
