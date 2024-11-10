@@ -5,7 +5,6 @@ from Roof import Roof
 from WallWithDoor import WallWithDoor
 from WallWithWindow import WallWithWindow
 
-
 class House:
 
     def __init__(self, pos: tuple, bw: World):
@@ -26,10 +25,9 @@ class House:
             raise ValueError("Wall is not associated with a PyBlockWorld instance.")
 
         x, y, z = self.pos
-        self.wallFront = Wall((x + 3, y - 1, z - 2), self.__bw)
+        self.wallFront = Wall((x + 2, y - 1, z - 3), self.__bw)
         self.wallFront.build()
         self.wallBack = WallWithWindow((x - 3, y - 1, z + 3), self.__bw)
-        self.wallBack.material_id = "default:brick"
         self.wallBack.rotated = True
         self.wallBack.build()
         self.wallLeft = WallWithDoor((x - 3, y - 1, z - 3), self.__bw)
@@ -37,9 +35,9 @@ class House:
         self.wallRight = WallWithWindow((x - 3, y - 1, z - 3), self.__bw)
         self.wallRight.rotated = True
         self.wallRight.build()
-        third = WallWithDoor((x + 8, y + 8, z + 6), self.__bw)
-        third.rotated = True
-        third.build()
+        self.roof = Roof((x -3, y+self.wallFront.height , z -3), self.__bw)
+        self.roof.build()
+
 
     def change_wall_material(self, new_material_id: str):
         self.wallFront.material = new_material_id
