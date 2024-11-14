@@ -9,10 +9,10 @@ class House:
 
     def __init__(self, pos: tuple, bw: World):
 
-        self.wallFront: Wall
-        self.wallBack: Wall
-        self.wallLeft: Wall
-        self.wallRight: Wall
+        self.wallFront =Wall(pos, bw)
+        self.wallBack= Wall(pos, bw)
+        self.wallLeft= Wall(pos, bw)
+        self.wallRight= Wall(pos, bw)
         self.roof: Roof
         self.pos = pos
         self.__bw = bw
@@ -40,8 +40,7 @@ class House:
 
 
     def change_wall_material(self, new_material_id: str):
-        self.wallFront.material = new_material_id
-        self.wallBack.material = new_material_id
-        self.wallLeft.material = new_material_id
-        self.wallRight.material = new_material_id
-        self.roof = new_material_id
+        self.wallFront.material_id = new_material_id
+        self.wallBack.material_id = new_material_id
+        self.wallLeft.material_id = new_material_id
+        self.wallRight.material_id = new_material_id

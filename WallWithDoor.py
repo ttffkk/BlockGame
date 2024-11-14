@@ -13,6 +13,6 @@ class WallWithDoor(Wall):
         x, y, z = self.pos
         super().build()
         if self.rotated:
-            self.bw.setBlocks(x + 3, y, z, x + 2, y + 3, z, self.door_material_id)
+            self._bw.setBlocks(x + 3, y, z, x + 2, y + 3, z, self.door_material_id)
         else:
-            self.bw.setBlocks(x, y, z + 3, x, y + 3, z + 2, self.door_material_id)
+            self._bw.setBlocks(x, y, z + 3, x, y + 3, z + 2, self.door_material_id)
