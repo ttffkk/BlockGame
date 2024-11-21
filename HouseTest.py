@@ -12,11 +12,13 @@ class HouseTest(unittest.TestCase):
 
 
     def test_change_wall_material(self):
-        vorher = [self.p.wallFront.material_id, self.p.wallBack.material_id, self.p.wallLeft.material_id,
+        before = [self.p.wallFront.material_id, self.p.wallBack.material_id, self.p.wallLeft.material_id,
                   self.p.wallRight.material_id]
         self.p.change_wall_material("default:brick")
 
-        nachher = [self.p.wallFront.material_id, self.p.wallBack.material_id, self.p.wallLeft.material_id,
+        after = [self.p.wallFront.material_id, self.p.wallBack.material_id, self.p.wallLeft.material_id,
                    self.p.wallRight.material_id]
 
-        self.assertFalse(all(a == b for a, b in zip(vorher, nachher)))
+        self.assertFalse(all(a == b for a, b in zip(before, after)))
+
+
